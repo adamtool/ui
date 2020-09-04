@@ -2,7 +2,7 @@
 DEPENDENCIES_FOLDERS="libs,framework"
 DEPENDENCIES_REPOS="git@github.com:adamtool/libs.git,git@github.com:adamtool/framework.git"
 DEPENDENCIES_REV="HEAD,HEAD"
-t=jar
+t=javac
 
 # should be executed no matter if a file with the same name exists or not
 .PHONY: check_dependencies
@@ -11,6 +11,8 @@ t=jar
 .PHONY: tools
 .PHONY: ui
 #.PHONY: javadoc
+.PHONY: setJavac
+.PHONY: setJar
 .PHONY: setClean
 .PHONY: setCleanAll
 .PHONY: clean
@@ -51,6 +53,9 @@ tools: check_dependencies
 
 ui: check_dependencies
 	ant -buildfile ./build.xml $(t)
+
+setJavac:
+	$(eval t=javac)
 
 setClean:
 	$(eval t=clean)
