@@ -2,7 +2,7 @@ package uniolunisaar.adam.logic.ui.cl.modules.converter;
 
 import java.util.Map;
 import org.apache.commons.cli.Option;
-import uniolunisaar.adam.data.ui.cl.parameters.IOParameters;
+import uniolunisaar.adam.ds.ui.cl.parameters.IOParameters;
 import uniolunisaar.adam.logic.ui.cl.modules.AbstractSimpleModule;
 
 /**

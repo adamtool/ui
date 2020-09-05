@@ -1,4 +1,4 @@
-package uniolunisaar.adam.data.ui.cl.parameters;
+package uniolunisaar.adam.ds.ui.cl.parameters;
 
 import java.util.HashMap;
 import java.util.Map;
