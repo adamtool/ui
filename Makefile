@@ -1,3 +1,5 @@
+## @author Manuel Gieseking
+
 # dependencies (folders and repos should be equally ordered)
 DEPENDENCIES_FOLDERS="libs,framework"
 DEPENDENCIES_REPOS="git@github.com:adamtool/libs.git,git@github.com:adamtool/framework.git"
@@ -38,7 +40,7 @@ endef
 all: tools ui
 
 check_dependencies:
-	if [ ! -d "dependencies" ]; then \
+	@if [ ! -d "dependencies" ]; then \
 		echo "The dependencies folder is missing. Please execute make pull_dependencies first.";\
 	fi
 
@@ -46,7 +48,7 @@ pull_dependencies:
 	./pull_dependencies.sh ${DEPENDENCIES_FOLDERS} ${DEPENDENCIES_REPOS} ${DEPENDENCIES_REV}
 
 rm_dependencies:
-	rm -rf dependencies
+	$(RM) -rf dependencies
 
 tools: check_dependencies
 	ant -buildfile ./dependencies/framework/tools/build.xml $(t)
@@ -63,13 +65,13 @@ setClean:
 setCleanAll:
 	$(eval t=clean-all)
 
-clean: setClean $(FRAMEWORK_TARGETS) logics
-	rm -r -f deploy
-	rm -r -f javadoc
+clean: setClean tools ui
+	$(RM) -r -f deploy
+	$(RM) -r -f javadoc
 
-clean-all: setCleanAll $(FRAMEWORK_TARGETS) logics
-	rm -r -f deploy
-	rm -r -f javadoc
+clean-all: setCleanAll tools ui
+	$(RM) -r -f deploy
+	$(RM) -r -f javadoc
 
 #javadoc:
 #	ant javadoc
