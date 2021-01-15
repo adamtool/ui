@@ -21,7 +21,7 @@ public abstract class Modules {
         }
 //        String format = "  %-" + Integer.toString(longestModuleName) + "s  %s";
         String format = "  %-" + Integer.toString(longestModuleName) + "s  ";
-        pw.append("Usage: sh adam.sh <module> or java -jar adam.jar <module>");
+        pw.append("Usage: ./" + getToolName() + " <module> or java -DPROPERTY_FILE=./ADAM.properties -jar " + getToolName() + ".jar <module>");
         pw.append(System.lineSeparator());
         pw.append("Available modules:");
         pw.append(System.lineSeparator());
@@ -36,5 +36,9 @@ public abstract class Modules {
                     String.format(format, module.getName()) + module.getDescr());
             pw.flush();
         }
+    }
+
+    public String getToolName() {
+        return "adam";
     }
 }
